@@ -49,13 +49,13 @@ namespace Web_Auto.Controllers
         [HttpGet]
         public int GetStartCount()
         {
-            return 0;
+            return _car.StartCount;
         }
         
         [HttpGet]
         public int GetoOdometerValue()
         {
-            return 0;
+            return _car.Odometer;
         }
     }
 }
