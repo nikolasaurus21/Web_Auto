@@ -1,4 +1,5 @@
-﻿namespace Web_Auto.Class
+﻿using Microsoft.Extensions.DependencyInjection;
+namespace Web_Auto.Class
 {
     public class Car : ICar
     {
@@ -6,8 +7,8 @@
         public int Odometer { get; set; }
         private bool YesNoStarted { get; set; }
 
-        private readonly Immobilizer _imm;
-        public Car(Immobilizer imm)
+        private readonly IImmobilizer _imm;
+        public Car(IImmobilizer imm)
         {
             _imm = imm;
         }
@@ -22,19 +23,19 @@
             {
                  StartCount++;
             }
-
+            
             
         }
         public void Stop()
         {
             if (YesNoStarted == true)
             {
-                YesNoStarted = false;
+                 YesNoStarted = false;
             }
 
             if (YesNoStarted == false)
             {
-                _imm.IsKeyPresent = false;
+                 _imm.IsKeyPresent = false;
             }
         }
 
@@ -45,5 +46,7 @@
                 Odometer += kilometers;
             }
         }
+
+        
     }
 }

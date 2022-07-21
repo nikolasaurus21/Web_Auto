@@ -1,9 +1,20 @@
 using Web_Auto.Class;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+/*
+ 
+var service = new ServiceCollection();
+service.AddScoped<ICar, Car>();
+IServiceProvider provider = service.BuildServiceProvider();
+provider.GetRequiredService<ICar>();
+
+ */
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -11,7 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//builder.Services.AddScoped<ICar, Car>();
+
 
 var app = builder.Build();
 
