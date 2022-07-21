@@ -31,7 +31,7 @@ namespace Web_Auto.Controllers
 
 
 
-        [HttpPut]
+        [HttpPost]
         public void DriveCar(int kilometers) => _car.Drive(kilometers);
 
         [HttpPost]
