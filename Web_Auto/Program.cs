@@ -19,9 +19,8 @@ var service = builder.Services.AddScoped<ICar,Car>();
 var service1 = builder.Services.AddSingleton<IImmobilizer, Immobilizer>();
 
 IServiceProvider provider = service.BuildServiceProvider();
-IServiceProvider provider1 = service1.BuildServiceProvider();
 var ccar = provider.GetRequiredService<ICar>();
-var carr = provider1.GetRequiredService<IImmobilizer>();
+var carr = provider.GetRequiredService<IImmobilizer>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
