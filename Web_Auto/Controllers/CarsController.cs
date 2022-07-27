@@ -7,7 +7,7 @@ namespace Web_Auto.Controllers
 
     [Route("[action]")]
     [ApiController]
-    public class CarsController : Controller
+    public class CarsController : ControllerBase
     {
 
         private readonly ICar _car;
@@ -19,19 +19,15 @@ namespace Web_Auto.Controllers
             _immobilizer = immobilizer;
         }
 
-        [HttpGet]
+        [HttpPost]
         public void StartCar()
         {
-            if (_car.Start == null)
-            {
-                throw new Exception("Error");
-
-            }
-
-            _car.Start();
+            
+            
         }
+        
 
-        [HttpGet]
+        [HttpPost]
         public void StopCar()
         {
             if(_car.Stop == null)
@@ -62,7 +58,8 @@ namespace Web_Auto.Controllers
             {
                 throw new Exception("Already true");
             }
-            return _immobilizer.IsKeyPresent = true;
+            
+               return  _immobilizer.IsKeyPresent = true;
         }
 
         [HttpPost]
@@ -72,6 +69,7 @@ namespace Web_Auto.Controllers
             {
                 throw new Exception("Already false");
             }
+
             return _immobilizer.IsKeyPresent = false;
         }
 
@@ -80,7 +78,7 @@ namespace Web_Auto.Controllers
         {
             if(_car.StartCount == 0)
             {
-                throw new Exception("Car never startred");
+                throw new Exception("Car Never Started");
             }
             return _car.StartCount;
         }
