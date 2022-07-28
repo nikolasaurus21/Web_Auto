@@ -77,11 +77,15 @@ namespace Web_Auto.Controllers
         {
             if(_immobilizer.IsKeyPresent == true)
             {
-                Ok("IsKeyPresent is already true");
+                return Ok("IsKeyPresent is already true");
+            }
+            else
+            {
+                _immobilizer.IsKeyPresent = true;
+                return Ok("Success");
+
             }
 
-             _immobilizer.IsKeyPresent = true;
-            return Ok("Success");
             
         }
 
@@ -90,12 +94,14 @@ namespace Web_Auto.Controllers
         {
             if (_immobilizer.IsKeyPresent == false)
             {
-                Ok("IsKeyPresent is already false");
+                return Ok("IsKeyPresent is already false");
             }
-           
+            else
+            {
 
-            _immobilizer.IsKeyPresent = false;
-            return Ok("Success");
+                _immobilizer.IsKeyPresent = false;
+                return Ok("Success");
+            }
             
         }
 
