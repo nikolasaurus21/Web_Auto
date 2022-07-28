@@ -20,67 +20,99 @@ namespace Web_Auto.Controllers
         }
 
         [HttpPost]
-        public void StartCar()
+
+        // Moze li ovako public ActionResult StartCar() ili mora public ActionResult<Car> StartCar()
+        // ja sam ga makako jer sam mislio posto imam vec ovo _car da mi ne treba <Car>
+        public ActionResult StartCar()
         {
-            
-            
+            try
+            {
+                _car.Start();
+                return Ok("Success");
+             
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+             
         }
         
 
         [HttpPost]
-        public void StopCar()
+        public ActionResult StopCar()
         {
-            if(_car.Stop == null)
+            try
             {
-                throw new Exception("Error");
+                _car.Stop();
+                return Ok("Success");
+
             }
-            _car.Stop();
-        }
-
-
-
-
-        [HttpPost]
-        public void DriveCar(int kilometers)
-        { 
-            if (_car.Drive == null)
+            catch (Exception ex)
             {
-                throw new Exception("Error");
+                return NotFound(ex.Message);
             }
-  
-        _car.Drive(kilometers);
+
         }
 
         [HttpPost]
-        public bool InsertKey()
+        public ActionResult Drive(int kilometers)
+        {
+            if (kilometers <= 0)
+            {
+                return BadRequest("Kilometers must be greater than 0");
+            }
+            else
+            {
+                _car.Drive(kilometers);
+                return Ok("Success");
+
+            }
+            
+
+        }
+
+        [HttpPost]
+        public ActionResult InsertKey()
         {
             if(_immobilizer.IsKeyPresent == true)
             {
-                throw new Exception("Already true");
+                Ok("IsKeyPresent is already true");
             }
+
+             _immobilizer.IsKeyPresent = true;
+            return Ok("Success");
             
-               return  _immobilizer.IsKeyPresent = true;
         }
 
         [HttpPost]
-        public bool RemoveKey()
+        public ActionResult RemoveKey()
         {
-            if(_immobilizer.IsKeyPresent== false)
+            if (_immobilizer.IsKeyPresent == false)
             {
-                throw new Exception("Already false");
+                Ok("IsKeyPresent is already false");
             }
+           
 
-            return _immobilizer.IsKeyPresent = false;
+            _immobilizer.IsKeyPresent = false;
+            return Ok("Success");
+            
         }
 
         [HttpGet]
-        public int GetStartCount()
+        public  int GetStartCount()
         {
             if(_car.StartCount == 0)
             {
                 throw new Exception("Car Never Started");
             }
+
+            
+
             return _car.StartCount;
+            
+            
+
         }
         
         [HttpGet]
@@ -90,8 +122,8 @@ namespace Web_Auto.Controllers
             {
                 throw new Exception("Car never driven");
             }
-
-            return _car.Odometer;
+             return _car.Odometer;
+            
         }
     }
 }
