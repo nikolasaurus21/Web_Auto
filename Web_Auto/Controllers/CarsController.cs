@@ -5,7 +5,7 @@ using Web_Auto.Class;
 namespace Web_Auto.Controllers
 {
 
-    [Route("[action]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class CarsController : ControllerBase
     {
@@ -106,29 +106,29 @@ namespace Web_Auto.Controllers
         }
 
         [HttpGet]
-        public  int GetStartCount()
+        public  ActionResult GetStartCount()
         {
             if(_car.StartCount == 0)
             {
-                throw new Exception("Car Never Started");
+                return NotFound("Car never started");
             }
 
             
-
-            return _car.StartCount;
+            return Ok(_car.StartCount);
             
             
 
         }
         
         [HttpGet]
-        public int GetoOdometerValue()
+        public ActionResult GetoOdometerValue()
         {
             if (_car.Odometer == 0)
             {
-                throw new Exception("Car never driven");
+                return NotFound("Car was driven 0 kilometers");
             }
-             return _car.Odometer;
+
+             return Ok(_car.Odometer);
             
         }
     }
