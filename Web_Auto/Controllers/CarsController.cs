@@ -65,7 +65,7 @@ namespace Web_Auto.Controllers
             else
             {
                 _car.Drive(kilometers);
-                return Ok($"The ride was {kilometers} km long");
+                return Ok("Success");
 
             }
             
