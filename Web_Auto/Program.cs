@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
- builder.Services.AddScoped<ICar,Car>();
- builder.Services.AddScoped<IImmobilizer, Immobilizer>();
+ builder.Services.AddSingleton<ICar,Car>();
+ builder.Services.AddSingleton<IImmobilizer, Immobilizer>();
 
 
 
