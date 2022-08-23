@@ -28,7 +28,7 @@ namespace Web_Auto.Controllers
             try
             {
                 _car.Start();
-                return Ok("Success");
+                return Ok("Car started");
              
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace Web_Auto.Controllers
             try
             {
                 _car.Stop();
-                return Ok("Success");
+                return Ok("Car stopped");
 
             }
             catch (Exception ex)
