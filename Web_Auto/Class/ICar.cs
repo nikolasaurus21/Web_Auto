@@ -2,8 +2,8 @@
 {
     public interface ICar
     {
-        int StartCount { get; }
-        int Odometer { get; }
+        int StartCount { get; set; } 
+        int Odometer { get; set; }
         void Start();
         void Stop();
         void Drive(int kilometers);

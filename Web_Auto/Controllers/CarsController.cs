@@ -65,7 +65,7 @@ namespace Web_Auto.Controllers
             else
             {
                 _car.Drive(kilometers);
-                return Ok("Success");
+                return Ok($"The ride was {kilometers} km long");
 
             }
             
@@ -121,15 +121,17 @@ namespace Web_Auto.Controllers
         }
         
         [HttpGet]
-        public ActionResult GetoOdometerValue()
+        public  ActionResult GetoOdometerValue()
         {
             if (_car.Odometer == 0)
             {
                 return NotFound("Car was driven 0 kilometers");
             }
 
-             return Ok(_car.Odometer);
+           
+             return   Ok(_car.Odometer);
             
+
         }
     }
 }
