@@ -5,7 +5,7 @@ using Web_Auto.Class;
 namespace Web_Auto.Controllers
 {
 
-    [Route("[controller]/[action]")]
+    [Route("[action]")]
     [ApiController]
     public class CarsController : ControllerBase
     {

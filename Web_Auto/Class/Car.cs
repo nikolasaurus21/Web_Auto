@@ -33,10 +33,7 @@ namespace Web_Auto.Class
                  YesNoStarted = false;
             }
 
-            if (YesNoStarted == false)
-            {
-                 _imm.IsKeyPresent = false;
-            }
+            
         }
 
         public void Drive(int kilometers)
